@@ -7,6 +7,7 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes'); // Add route import
 const clothRoutes = require('./routes/prodClothesRoutes');
 const artRoutes = require('./routes/prodArtRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 const app = express();
 
 // Middleware
@@ -20,6 +21,7 @@ connectDB();
 app.use('/api/auth', authRoutes); // Add authentication routes
 app.use('/api/clothes', clothRoutes);
 app.use('/api/art', artRoutes );
+app.use('/api/order', orderRoutes);
 
 
 // Start the server
