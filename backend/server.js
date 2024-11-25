@@ -5,7 +5,8 @@ const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes'); // Add route import
-
+const clothRoutes = require('./routes/prodClothesRoutes');
+const artRoutes = require('./routes/prodArtRoutes');
 const app = express();
 
 // Middleware
@@ -17,6 +18,9 @@ connectDB();
 
 // Routes
 app.use('/api/auth', authRoutes); // Add authentication routes
+app.use('/api/clothes', clothRoutes);
+app.use('/api/art', artRoutes );
+
 
 // Start the server
 const PORT = process.env.PORT || 5000;

@@ -34,10 +34,15 @@ const OrderSchema = new mongoose.Schema({
         type: String,
         required: true, // Store the payment transaction ID
     },
+    totalAmount: {
+        type: Number,
+        required: true,
+        min: 0
+    },
     status: {
         type: String,
-        enum: ['received', 'accepted', 'on its way', 'delivered'],
-        default: 'received',
+        enum: ['pending', 'received', 'accepted', 'on its way', 'delivered', 'cancelled'],
+        default: 'pending',
     },
     shippingInfo: {
         address: {
@@ -65,6 +70,11 @@ const OrderSchema = new mongoose.Schema({
             required: true,
         }
     }
+}, {
+    timestamps: true  // Adds createdAt and updatedAt fields automatically
 });
+
+// Add an index for better query performance
+OrderSchema.index({ userId: 1, date: -1 });
 
 module.exports = mongoose.model('Order', OrderSchema);
