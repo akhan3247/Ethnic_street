@@ -1,1 +1,1 @@
-Ethnic E commerce Web Apllication built using MERN stack
+Ethnic Street Wear E commerce Web Apllication built using MERN stack
